@@ -7,7 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<TagsContext>(optionsBuilder =>
 {
-    // optionsBuilder.UseMySql("server=localhost;user=root;password=root;database=tags", ServerVersion.Parse("10.6.5-mariadb"));
+    var constr = System.Environment.GetEnvironmentVariable("MYSQLCONNSTR_localdb");
+    optionsBuilder.UseMySql(constr, ServerVersion.Parse(constr));
 });
 
 var app = builder.Build();
