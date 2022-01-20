@@ -19,9 +19,10 @@ public class IndexModel : PageModel
         ConStr = ConStr.Replace("Password", "password");
     }
 
-    public IndexModel(ILogger<IndexModel> logger)
+    public IndexModel(ILogger<IndexModel> logger, TagsContext context)
     {
         _logger = logger;
+        Tags = context.Tags.AsEnumerable();
     }
 
     public void OnGet()
