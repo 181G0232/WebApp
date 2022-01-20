@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using WebApp.Models;
 
 namespace WebApp.Pages;
@@ -8,6 +9,7 @@ public class IndexModel : PageModel
 {
     private readonly ILogger<IndexModel> _logger;
     public static string ConStr { get; }
+    public static ServerVersion Version { get; }
 
     static IndexModel()
     {
@@ -17,6 +19,8 @@ public class IndexModel : PageModel
         // ConStr = ConStr.Replace("User Id", "user");
         // ConStr = ConStr.Replace("Password", "password");
         // ConStr = ConStr.Replace("127.0.0.1", "localhost");
+        //
+        Version = ServerVersion.AutoDetect(ConStr);
     }
 
     public IndexModel(ILogger<IndexModel> logger)

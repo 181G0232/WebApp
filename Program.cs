@@ -11,7 +11,8 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<TagsContext>(optionsBuilder =>
 {
     string constr = IndexModel.ConStr;
-    optionsBuilder.UseMySql(constr, ServerVersion.AutoDetect(constr), options =>
+    var version = IndexModel.Version;
+    optionsBuilder.UseMySql(constr, version, options =>
     {
         options.EnableRetryOnFailure(5);
     });
