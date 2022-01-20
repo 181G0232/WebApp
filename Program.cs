@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using WebApp.Models;
 
+System.Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "Development");
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
