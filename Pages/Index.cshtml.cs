@@ -14,11 +14,11 @@ public class IndexModel : PageModel
     static IndexModel()
     {
         ConStr = System.Environment.GetEnvironmentVariable("MYSQLCONNSTR_localdb") ?? "No value";
-        // ConStr = ConStr.Replace("Database", "database");
-        // ConStr = ConStr.Replace("Data Source", "server");
-        // ConStr = ConStr.Replace("User Id", "user");
-        // ConStr = ConStr.Replace("Password", "password");
-        // ConStr = ConStr.Replace("127.0.0.1", "localhost");
+        ConStr = ConStr.Replace("Database", "database");
+        ConStr = ConStr.Replace("Data Source", "server");
+        ConStr = ConStr.Replace("User Id", "user");
+        ConStr = ConStr.Replace("Password", "password");
+        ConStr = ConStr.Replace("127.0.0.1", "localhost");
         //
         Version = ServerVersion.Parse("5.7.9-mysql");
     }
