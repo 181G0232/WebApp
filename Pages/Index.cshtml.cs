@@ -21,7 +21,7 @@ public class IndexModel : PageModel
         ConStr = ConStr.Replace("127.0.0.1", "localhost");
         ConStr = ConStr.Replace(":", ";port=");
         //
-        Version = ServerVersion.Parse("5.7.9-mysql");
+        Version = ServerVersion.AutoDetect(ConStr);
     }
 
     public IndexModel(ILogger<IndexModel> logger)
