@@ -12,7 +12,15 @@ builder.Services.AddDbContext<TagsContext>(optionsBuilder =>
     var constr = System.Environment.GetEnvironmentVariable("MYSQLCONNSTR_localdb");
     constr?.Replace("Data Source", "server");
     constr?.Replace("User Id", "user");
-    optionsBuilder.UseMySql(constr, ServerVersion.Parse(constr));
+    //
+    try
+    {
+        optionsBuilder.UseMySql(constr, ServerVersion.Parse(constr), options =>
+        {
+            options.EnableRetryOnFailure(10);
+        });
+    }
+    catch { }
 });
 
 var app = builder.Build();
