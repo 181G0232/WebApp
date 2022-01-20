@@ -16,6 +16,7 @@ public class IndexModel : PageModel
         ConStr = ConStr.Replace("Data Source", "server");
         ConStr = ConStr.Replace("User Id", "user");
         ConStr = ConStr.Replace("Password", "password");
+        ConStr = ConStr.Replace("127.0.0.1", "localhost");
     }
 
     public IndexModel(ILogger<IndexModel> logger)
