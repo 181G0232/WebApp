@@ -13,6 +13,10 @@ public class IndexModel : PageModel
     static IndexModel()
     {
         ConStr = System.Environment.GetEnvironmentVariable("MYSQLCONNSTR_localdb") ?? "No value";
+        ConStr.Replace("Database", "database");
+        ConStr.Replace("Data Source", "server");
+        ConStr.Replace("User Id", "id");
+        ConStr.Replace("Password", "password");
     }
 
     public IndexModel(ILogger<IndexModel> logger)
