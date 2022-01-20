@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using WebApp.Models;
+using WebApp.Pages;
 
 System.Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "Development");
 
@@ -9,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<TagsContext>(optionsBuilder =>
 {
-    string constr = null;
+    string constr = IndexModel.ConStr;
     optionsBuilder.UseMySql(constr, ServerVersion.Parse(constr), options =>
     {
         options.EnableRetryOnFailure(10);

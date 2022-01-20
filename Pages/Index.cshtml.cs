@@ -15,7 +15,7 @@ public class IndexModel : PageModel
         ConStr = System.Environment.GetEnvironmentVariable("MYSQLCONNSTR_localdb") ?? "No value";
         ConStr = ConStr.Replace("Database", "database");
         ConStr = ConStr.Replace("Data Source", "server");
-        ConStr = ConStr.Replace("User Id", "id");
+        ConStr = ConStr.Replace("User Id", "user");
         ConStr = ConStr.Replace("Password", "password");
     }
 
