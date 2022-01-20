@@ -1,7 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using WebApp.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<TagsContext>(optionsBuilder =>
+{
+    // optionsBuilder.UseMySql("server=localhost;user=root;password=root;database=tags", ServerVersion.Parse("10.6.5-mariadb"));
+});
 
 var app = builder.Build();
 
