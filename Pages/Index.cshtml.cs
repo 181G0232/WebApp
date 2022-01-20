@@ -8,13 +8,16 @@ public class IndexModel : PageModel
 {
     private readonly ILogger<IndexModel> _logger;
     public IEnumerable<Tag> Tags { get; }
-    public string ConStr { get; }
+    public static string ConStr { get; }
 
-    public IndexModel(ILogger<IndexModel> logger, TagsContext context)
+    static IndexModel()
+    {
+        ConStr = System.Environment.GetEnvironmentVariable("MYSQLCONNSTR_localdb") ?? "No value";
+    }
+
+    public IndexModel(ILogger<IndexModel> logger)
     {
         _logger = logger;
-        Tags = context.Tags.AsEnumerable();
-        ConStr = System.Environment.GetEnvironmentVariable("MYSQLCONNSTR_localdb") ?? "No value";
     }
 
     public void OnGet()

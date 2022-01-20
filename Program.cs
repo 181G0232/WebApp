@@ -9,18 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<TagsContext>(optionsBuilder =>
 {
-    var constr = System.Environment.GetEnvironmentVariable("MYSQLCONNSTR_localdb");
-    constr?.Replace("Data Source", "server");
-    constr?.Replace("User Id", "user");
-    //
-    try
+    string constr = null;
+    optionsBuilder.UseMySql(constr, ServerVersion.Parse(constr), options =>
     {
-        optionsBuilder.UseMySql(constr, ServerVersion.Parse(constr), options =>
-        {
-            options.EnableRetryOnFailure(10);
-        });
-    }
-    catch { }
+        options.EnableRetryOnFailure(10);
+    });
 });
 
 var app = builder.Build();
