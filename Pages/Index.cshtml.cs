@@ -7,7 +7,6 @@ namespace WebApp.Pages;
 public class IndexModel : PageModel
 {
     private readonly ILogger<IndexModel> _logger;
-    public IEnumerable<Tag> Tags { get; }
     public static string ConStr { get; }
 
     static IndexModel()
@@ -19,10 +18,9 @@ public class IndexModel : PageModel
         ConStr = ConStr.Replace("Password", "password");
     }
 
-    public IndexModel(ILogger<IndexModel> logger, TagsContext context)
+    public IndexModel(ILogger<IndexModel> logger)
     {
         _logger = logger;
-        Tags = context.Tags.AsEnumerable();
     }
 
     public void OnGet()

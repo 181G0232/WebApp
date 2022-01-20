@@ -13,7 +13,7 @@ builder.Services.AddDbContext<TagsContext>(optionsBuilder =>
     string constr = IndexModel.ConStr;
     optionsBuilder.UseMySql(constr, ServerVersion.Parse(constr), options =>
     {
-        options.EnableRetryOnFailure(10);
+        options.EnableRetryOnFailure(5);
     });
 });
 
