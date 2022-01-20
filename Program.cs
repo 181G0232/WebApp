@@ -10,6 +10,8 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<TagsContext>(optionsBuilder =>
 {
     var constr = System.Environment.GetEnvironmentVariable("MYSQLCONNSTR_localdb");
+    constr?.Replace("Data Source", "server");
+    constr?.Replace("User Id", "user");
     optionsBuilder.UseMySql(constr, ServerVersion.Parse(constr));
 });
 
